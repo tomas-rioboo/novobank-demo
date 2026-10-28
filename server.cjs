@@ -1,0 +1,4 @@
+const http=require('node:http');const fs=require('node:fs');const path=require('node:path');const root=__dirname;const types={'.html':'text/html','.css':'text/css','.js':'text/javascript','.svg':'image/svg+xml','.woff2':'font/woff2','.ttf':'font/ttf','.png':'image/png'};
+http.createServer((req,res)=>{let file;try{file=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));}catch{res.writeHead(400);return res.end();}if(!file.startsWith(root+path.sep)&&file!==root){res.writeHead(403);return res.end();}if(file===root||fs.existsSync(file)&&fs.statSync(file).isDirectory())file=path.join(file,'index.html');fs.readFile(file,(err,data)=>{if(err){res.writeHead(404);return res.end('Not found');}res.writeHead(200,{'Content-Type':(types[path.extname(file)]||'application/octet-stream')+'; charset=utf-8','Cache-Control':'no-cache'});res.end(data);});}).listen(53691,'127.0.0.1',()=>console.log('Novobank: http://localhost:53691'));
+
+

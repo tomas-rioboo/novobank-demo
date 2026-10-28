@@ -1,0 +1,9 @@
+node_modules/
+.vercel/
+dist/
+verification/
+*.log
+.env*
+CONTEXTO-FINTECH-CHILL.md
+assets/fonts-source.css
+verify.cjs

@@ -1,0 +1,1 @@
+{"name":"novobank-demo","version":"1.0.0","private":true,"description":"Local-first Novobank onboarding prototype","scripts":{"start":"node server.cjs","check":"node --check app.js"}}
